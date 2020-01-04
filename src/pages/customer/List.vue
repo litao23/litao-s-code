@@ -91,10 +91,16 @@ export default {
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          this.$message({
-            type: 'success',
-            message: '删除成功!'+id
-          });
+            //调用后台接口完成参数
+            let url="http://localhost:6677/customer/deleteById?id="+id;
+            request.get(url).then((response)=>{
+                this.loadData();
+                    this.$message({
+                    type: 'success',
+                    message: response.message
+                });
+            })
+          
         })
         },
         toUpdateHandeler(row){
@@ -106,6 +112,9 @@ export default {
             this.visible=false;
         },
         toAddHandler(){
+            this.form = {
+                type:"customer"
+            }
             this.visible=true;
         }
     },

@@ -72,7 +72,7 @@ export default {
           type: 'warning'
         }).then(() => {
             //调用后台接口完成参数
-            let url="http://localhost:6677/customer/deleteById"+id;
+            let url="http://localhost:6677/product/deleteById"+id;
             request.get(url).then((response)=>{
                 this.loadData();
                     this.$message({
